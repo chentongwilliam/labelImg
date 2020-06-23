@@ -495,7 +495,7 @@ class Canvas(QWidget):
     def transformPos(self, point):
         """Convert from widget-logical coordinates to painter-logical coordinates."""
         point /= QPointF(self.scale, self.scale)
-        return point / self.scale - self.offsetToCenter()
+        return point - self.offsetToCenter()
 
     def offsetToCenter(self):
         s = self.scale
