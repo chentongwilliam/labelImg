@@ -17,12 +17,12 @@ CURSOR_GRAB = Qt.OpenHandCursor
 
 
 class Canvas(QWidget):
-    zoomRequest = pyqtSignal(int)
-    scrollRequest = pyqtSignal(int, int)
-    newShape = pyqtSignal()
-    selectionChanged = pyqtSignal(bool)
-    shapeMoved = pyqtSignal()
-    drawingPolygon = pyqtSignal(bool)
+    zoomRequest = Signal(int)
+    scrollRequest = Signal(int, int)
+    newShape = Signal()
+    selectionChanged = Signal(bool)
+    shapeMoved = Signal()
+    drawingPolygon = Signal(bool)
 
     CREATE, EDIT = list(range(2))
 
