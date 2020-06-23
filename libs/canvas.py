@@ -1,13 +1,8 @@
 
-try:
-    from PyQt5.QtGui import *
-    from PyQt5.QtCore import *
-    from PyQt5.QtWidgets import *
-except ImportError:
-    from PyQt4.QtGui import *
-    from PyQt4.QtCore import *
-
-#from PyQt4.QtOpenGL import *
+from PySide2.QtGui import *
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
+from PySide2.QtCore import Qt
 
 from libs.shape import Shape
 from libs.utils import distance
@@ -499,6 +494,7 @@ class Canvas(QWidget):
 
     def transformPos(self, point):
         """Convert from widget-logical coordinates to painter-logical coordinates."""
+        point /= QPointF(self.scale, self.scale)
         return point / self.scale - self.offsetToCenter()
 
     def offsetToCenter(self):
