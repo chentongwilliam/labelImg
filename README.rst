@@ -10,7 +10,7 @@ Windows10
 
 What i have done:
 
-1. Open cmd and "pyside2-rcc -o resources.py resources.qrc"
+1. Open cmd and "pyside2-rcc -o libs/resources.py resources.qrc"
 -----------------------------------------------------------
 
 2. Replace import PyQt5 with PySide2 in all files. 
