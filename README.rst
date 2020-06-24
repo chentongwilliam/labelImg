@@ -1,4 +1,78 @@
-LabelImg
+Migration from PyQt5 to PySide2
+Python: 3.8.2
+PySide2: 5.15.0
+Windows10
+
+What i have done:
+
+1. Open cmd and "pyside2-rcc -o resources.py resources.qrc"
+
+2. Replace PyQt5 with PySide2 in all files. Such as:
+
+from PySide2.QtGui import *
+from PySide2.QtCore import *
+from PySide2.QtWidgets import *
+
+QVariant = str
+'''
+As QVariant was removed, any function expecting it can receive any Python object (None is an invalid QVariant). The same rule is valid when returning something: the returned QVariant will be converted to the its original Python object type.
+When a method expects a QVariant::Type the programmer can use a string (the type name) or the type itself.
+Reference: https://doc.qt.io/qtforpython-5.12/pysideapi2.html
+'''
+
+3. In canvas.py pyqtSignal() is replaced with Signal() and the function 'transformPos' is updated as below:
+
+    def transformPos(self, point):
+        """Convert from widget-logical coordinates to painter-logical coordinates."""
+        point = QPointF(point.x() / self.scale, point.y() / self.scale)                  
+        return point / self.scale - self.offsetToCenter()
+
+otherwise TypeError:
+
+TypeError: 'PySide2.QtCore.QPoint.__sub__' called with wrong argument types:
+  PySide2.QtCore.QPoint.__sub__(QPointF)
+Supported signatures:
+  PySide2.QtCore.QPoint.__sub__(PySide2.QtCore.QPoint)
+
+Reference: https://doc.qt.io/qtforpython/PySide2/QtCore/QPointF.html
+
+4. In labelImg.py replace 
+self.canvas.setFocus(True)
+with self.canvas.setFocus()
+
+otherwise TypeError:
+Traceback (most recent call last):
+  File "...\labelImg.py", line 1309, in openFile
+    self.loadFile(filename)
+  File "...\labelImg.py", line 1077, in loadFile
+    self.canvas.setFocus(True)
+TypeError: 'PySide2.QtWidgets.QWidget.setFocus' called with wrong argument types:
+  PySide2.QtWidgets.QWidget.setFocus(bool)
+Supported signatures:
+  PySide2.QtWidgets.QWidget.setFocus()
+  PySide2.QtWidgets.QWidget.setFocus(PySide2.QtCore.Qt.FocusReason)
+
+
+5. Im labelImg.py update function comboSelectionChanged:
+replace 2 with Qt.Checked, 0 with Qt.Unchecked
+
+otherwise TypeError:
+Traceback (most recent call last):
+  File "...\labelImg.py", line 835, in comboSelectionChanged
+    self.labelList.item(i).setCheckState(2) 
+TypeError: 'PySide2.QtWidgets.QListWidgetItem.setCheckState' called with wrong argument types:
+  PySide2.QtWidgets.QListWidgetItem.setCheckState(int)
+Supported signatures:
+  PySide2.QtWidgets.QListWidgetItem.setCheckState(PySide2.QtCore.Qt.CheckState)
+
+
+
+
+
+
+
+
+original LabelImg
 ========
 
 .. image:: https://img.shields.io/pypi/v/labelimg.svg
