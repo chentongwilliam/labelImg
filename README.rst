@@ -7,6 +7,7 @@ What i have done:
 
 1. Open cmd and "pyside2-rcc -o resources.py resources.qrc"
 
+
 2. Replace PyQt5 with PySide2 in all files. Such as:
 
 from PySide2.QtGui import *
@@ -19,6 +20,7 @@ As QVariant was removed, any function expecting it can receive any Python object
 When a method expects a QVariant::Type the programmer can use a string (the type name) or the type itself.
 Reference: https://doc.qt.io/qtforpython-5.12/pysideapi2.html
 '''
+
 
 3. In canvas.py pyqtSignal() is replaced with Signal() and the function 'transformPos' is updated as below:
 
@@ -35,6 +37,7 @@ Supported signatures:
   PySide2.QtCore.QPoint.__sub__(PySide2.QtCore.QPoint)
 
 Reference: https://doc.qt.io/qtforpython/PySide2/QtCore/QPointF.html
+
 
 4. In labelImg.py replace 
 self.canvas.setFocus(True)
