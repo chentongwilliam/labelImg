@@ -79,7 +79,7 @@ What i have done:
       PySide2.QtWidgets.QWidget.setFocus(PySide2.QtCore.Qt.FocusReason)
 
 
-5. Im labelImg.py update function comboSelectionChanged:
+5. In labelImg.py update function comboSelectionChanged:
 --------------------------------------------------------
 
     replace 2 with Qt.Checked, 0 with Qt.Unchecked
@@ -95,7 +95,26 @@ What i have done:
       PySide2.QtWidgets.QListWidgetItem.setCheckState(PySide2.QtCore.Qt.CheckState)
 
 
+6. In labelImg.py update multiple monitors issue.
+-------------------------------------------------
 
+            for i in range(len(QGuiApplication.screens())):      
+            
+                if QGuiApplication.screens()[i].availableGeometry().contains(saved_position):
+                
+                    position = saved_position
+                    
+                    break
+                
+          
+    otherwise Warning:
+    
+    Warning (from warnings module):
+    File "...\labelImg.py", line 427
+    if QApplication.desktop().availableGeometry(i).contains(saved_position):
+    DeprecationWarning: QDesktopWidget.availableGeometry(int screen) const is deprecated
+
+    Note: i don't know if it works because i only have one screen.
 
 
 
