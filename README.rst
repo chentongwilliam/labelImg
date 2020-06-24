@@ -30,7 +30,9 @@ Reference: https://doc.qt.io/qtforpython-5.12/pysideapi2.html
 
     def transformPos(self, point):
         """Convert from widget-logical coordinates to painter-logical coordinates."""
-        point = QPointF(point.x() / self.scale, point.y() / self.scale)                  
+        
+        point = QPointF(point.x() / self.scale, point.y() / self.scale)  
+        
         return point / self.scale - self.offsetToCenter()
 
 otherwise TypeError:
@@ -44,10 +46,14 @@ Reference: https://doc.qt.io/qtforpython/PySide2/QtCore/QPointF.html
 
 
 4. In labelImg.py replace 
+
 self.canvas.setFocus(True)
+
 with self.canvas.setFocus()
 
+
 otherwise TypeError:
+
 Traceback (most recent call last):
   File "...\labelImg.py", line 1309, in openFile
     self.loadFile(filename)
@@ -61,9 +67,11 @@ Supported signatures:
 
 
 5. Im labelImg.py update function comboSelectionChanged:
+
 replace 2 with Qt.Checked, 0 with Qt.Unchecked
 
 otherwise TypeError:
+
 Traceback (most recent call last):
   File "...\labelImg.py", line 835, in comboSelectionChanged
     self.labelList.item(i).setCheckState(2) 
