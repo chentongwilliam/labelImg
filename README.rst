@@ -1,6 +1,8 @@
 Migration from PyQt5 to PySide2
 ===============================
 
+Note: After using the PySide2-version and if you want to use the original version (with PyQt), you have to reset all (in the menu), otherwise an error.
+
 Python: 3.8.2
 
 PySide2: 5.15.0
