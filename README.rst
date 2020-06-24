@@ -79,7 +79,9 @@ Supported signatures:
 
 
 
-original LabelImg
+origin:
+
+LabelImg
 ========
 
 .. image:: https://img.shields.io/pypi/v/labelimg.svg
