@@ -831,11 +831,11 @@ class MainWindow(QMainWindow, WindowMixin):
         text = self.comboBox.cb.itemText(index)
         for i in range(self.labelList.count()):
             if text == "":
-                self.labelList.item(i).setCheckState(2) 
+                self.labelList.item(i).setCheckState(Qt.Checked) 
             elif text != self.labelList.item(i).text():
-                self.labelList.item(i).setCheckState(0)
+                self.labelList.item(i).setCheckState(Qt.Unchecked)
             else:
-                self.labelList.item(i).setCheckState(2)
+                self.labelList.item(i).setCheckState(Qt.Checked)
 
     def labelSelectionChanged(self):
         item = self.currentItem()
