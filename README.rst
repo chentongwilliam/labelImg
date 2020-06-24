@@ -1,7 +1,11 @@
 Migration from PyQt5 to PySide2
+
 Python: 3.8.2
+
 PySide2: 5.15.0
+
 Windows10
+
 
 What i have done:
 
