@@ -1073,7 +1073,7 @@ class MainWindow(QMainWindow, WindowMixin):
                 self.labelList.setCurrentItem(self.labelList.item(self.labelList.count()-1))
                 self.labelList.item(self.labelList.count()-1).setSelected(True)
 
-            self.canvas.setFocus(True)
+            self.canvas.setFocus()
             return True
         return False
 
