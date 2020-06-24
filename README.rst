@@ -13,7 +13,7 @@ What i have done:
 1. Open cmd and "pyside2-rcc -o resources.py resources.qrc"
 -----------------------------------------------------------
 
-2. Replace PyQt5 with PySide2 in all files. 
+2. Replace import PyQt5 with PySide2 in all files. 
 -------------------------------------------
 
     Such as:
